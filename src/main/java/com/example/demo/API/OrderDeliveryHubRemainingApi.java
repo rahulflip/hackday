@@ -1,10 +1,12 @@
 package com.example.demo.API;
 
 import com.example.demo.ClassImpl.OrderAndDeliveryHub;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public class OrderDeliveryHubRemainingApi {
+@Repository
+public interface OrderDeliveryHubRemainingApi extends JpaRepository<Clientbranchmaster,Integer> {
 
-    OrderAndDeliveryHub orderAndDeliveryBoyRemaining(){
+     public OrderAndDeliveryHub orderAndDeliveryBoyRemaining();
 
-    }
 }
