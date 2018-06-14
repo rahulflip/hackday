@@ -8,13 +8,13 @@ package com.entity;
 @Entity
 @Table(name="order_dh_map")
 public class OrderDHMap {
-    @Column
+    @Column(name = "order")
     Integer order;
 
-    @Column
-    Integer dh_id;
+    @Column(name = "dh_id")
+    Integer dhId;
 
-    @Column
+    @Column(name = "date")
     Date date;
     
 

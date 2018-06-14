@@ -11,16 +11,16 @@ import java.util.Date;
 public class DeliveryBoyAbsence {
 
     @Id
-    @Column
+    @Column(name = "delivery_boy_id")
     private Integer deliveryBoyId;
 
-    @Column
+    @Column(name = "assigned_status")
     private String assignedStatus;
 
-    @Column
+    @Column(name = "date")
     private Date date;
 
-    @Column
+    @Column(name = "presence")
     private String presence;
 
     public Integer getDeliveryBoyId() {

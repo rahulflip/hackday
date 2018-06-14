@@ -9,13 +9,13 @@ import javax.persistence.Table;
 @Table(name="delivery_dh_master")
 public class DeliveryDHMaster  {
     @Id
-    @Column
+    @Column(name = "no_delivered_package")
     private Integer noDeliveredPackage;
 
-    @Column
+    @Column(name = "delivery_boy_id")
     private Integer deliveryBoyId;
 
-    @Column
+    @Column(name = "dh_id")
     private Integer dhId;
 
     public Integer getNoDeliveredPackage() {

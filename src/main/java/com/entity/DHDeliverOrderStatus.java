@@ -10,22 +10,22 @@ import java.util.Date;
 @Table(name="dh_deliver_order_status")
 public class DHDeliverOrderStatus {
     @Id
-    @Column
+    @Column(name = "dh_id")
     private Integer dhId;
 
-    @Column
+    @Column(name = "delivery_boy_id")
     private Integer deliveryBoyId;
 
-    @Column
+    @Column(name = "delivery_boy_name")
     private String deliveryBoyName;
 
-    @Column
+    @Column(name = "status")
     private String status;
 
-    @Column
+    @Column(name = "date")
     private Date date;
 
-    @Column
+    @Column(name = "order_id")
     private String orderId;
 
     public Integer getDhId() {
