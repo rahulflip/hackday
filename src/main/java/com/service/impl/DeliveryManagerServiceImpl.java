@@ -11,7 +11,7 @@ import com.dto.Response;
 import com.entity.DHToDHMapping;
 import com.entity.OrderDHMap;
 import com.repository.DHToDHRepository;
-import com.repository.DeliveryBoyDHMasterRepository;
+import com.repository.DeliveryDHMasterRepository;
 import com.repository.OrderDHMapRepository;
 import com.service.DeliveryManagerService;
 
@@ -25,7 +25,7 @@ public class DeliveryManagerServiceImpl implements DeliveryManagerService{
 	OrderDHMapRepository orderDHMapRepository;
 	
 	@Autowired
-	DeliveryBoyDHMasterRepository deliveryBoyDHMasterRepository;
+	DeliveryDHMasterRepository deliveryBoyDHMasterRepository;
 	
 	@Override
 	List<Response> assignOrdersToDeliveryBoys(DeliveryBoyRequest request) {
