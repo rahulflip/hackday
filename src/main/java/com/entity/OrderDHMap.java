@@ -1,13 +1,17 @@
 package com.entity;
 
-        import javax.persistence.Column;
-        import javax.persistence.Entity;
-        import javax.persistence.Table;
+        import javax.persistence.*;
         import java.util.Date;
 
 @Entity
 @Table(name="order_dh_map")
 public class OrderDHMap {
+
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
+    Integer id;
+
     @Column(name = "order")
     Integer order;
 
@@ -28,11 +32,11 @@ public class OrderDHMap {
     }
 
     public Integer getDh_id() {
-        return dh_id;
+        return dhId;
     }
 
-    public void setDh_id(Integer dh_id) {
-        this.dh_id = dh_id;
+    public void setDh_id(Integer dhId) {
+        this.dhId = dhId;
     }
 
     public Date getDate() {
