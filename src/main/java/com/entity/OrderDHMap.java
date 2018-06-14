@@ -12,7 +12,7 @@ public class OrderDHMap {
     Integer order;
 
     @Column
-    Integer dh_id;
+    Integer dhId;
 
     @Column
     Date date;
@@ -26,11 +26,11 @@ public class OrderDHMap {
     }
 
     public Integer getDh_id() {
-        return dh_id;
+        return dhId;
     }
 
-    public void setDh_id(Integer dh_id) {
-        this.dh_id = dh_id;
+    public void setDh_id(Integer dhId) {
+        this.dhId = dhId;
     }
 
     public Date getDate() {

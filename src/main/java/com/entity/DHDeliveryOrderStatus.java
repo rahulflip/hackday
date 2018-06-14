@@ -10,31 +10,31 @@ import java.util.Date;
 @Table(name="dh_delivery_order_status")
 public class DHDeliveryOrderStatus {
     @Column
-    Integer dh_id;
+    Integer dhId;
 
     @Column
-    Integer delivery_boy_id;
+    Integer deliveryBoyId;
 
     @Column
     String status;
 
     @Column
-    Date order_date;
+    Date orderDate;
 
-    public Integer getDh_id() {
-        return dh_id;
+    public Integer getDhId() {
+        return dhId;
     }
 
-    public void setDh_id(Integer dh_id) {
-        this.dh_id = dh_id;
+    public void setDhId(Integer dhId) {
+        this.dhId = dhId;
     }
 
-    public Integer getDelivery_boy_id() {
-        return delivery_boy_id;
+    public Integer getDeliveryBoyId() {
+        return deliveryBoyId;
     }
 
-    public void setDelivery_boy_id(Integer delivery_boy_id) {
-        this.delivery_boy_id = delivery_boy_id;
+    public void setDeliveryBoyId(Integer deliveryBoyId) {
+        this.deliveryBoyId = deliveryBoyId;
     }
 
     public String getStatus() {
@@ -45,11 +45,11 @@ public class DHDeliveryOrderStatus {
         this.status = status;
     }
 
-    public Date getOrder_date() {
-        return order_date;
+    public Date getOrderDate() {
+        return orderDate;
     }
 
-    public void setOrder_date(Date order_date) {
-        this.order_date = order_date;
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
 }
