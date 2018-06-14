@@ -2,16 +2,21 @@ package com.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="delivery_boy_dh_master")
-public class DeliveryBoyDHMaster {
+@Table(name="delivery_dh_master")
+public class DeliveryDHMaster  {
+    @Id
     @Column
-    Integer noDeliveredPackage;
+    private Integer noDeliveredPackage;
 
     @Column
-    Integer deliveryBoyId;
+    private Integer deliveryBoyId;
+
+    @Column
+    private Integer dhId;
 
     public Integer getNoDeliveredPackage() {
         return noDeliveredPackage;
@@ -27,5 +32,13 @@ public class DeliveryBoyDHMaster {
 
     public void setDeliveryBoyId(Integer deliveryBoyId) {
         this.deliveryBoyId = deliveryBoyId;
+    }
+
+    public Integer getDhId() {
+        return dhId;
+    }
+
+    public void setDhId(Integer dhId) {
+        this.dhId = dhId;
     }
 }

@@ -5,7 +5,11 @@ import com.example.demo.ClassImpl.OrderAndDeliveryHub;
 public class
 OrderDeliveryHubRemainingApi {
 
-     OrderAndDeliveryHub orderAndDeliveryBoyRemaining(){
+     OrderAndDeliveryHub orderAndDeliveryHubRemaining(Integer dhId){
+          DHDeliveryOrderStatus dHDeliveryOrderStatus;
+          DHDeliveryOrderStatusRepository dHDeliveryOrderStatusRepository;
+
+
 
      }
 

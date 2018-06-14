@@ -5,30 +5,28 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="dh_to_dh_mapping")
+@Table(name="dh_dh_mapper")
 public class DHToDHMapping {
 
 	@Column
-	private Integer dh_id;
+	private Integer dhId;
 	
 	@Column
-	private Integer nearest_dh_id;
+	private Integer nearestDhId;
 
-	public Integer getDh_id() {
-		return dh_id;
+	public Integer getDhId() {
+		return dhId;
 	}
 
-	public void setDh_id(Integer dh_id) {
-		this.dh_id = dh_id;
+	public void setDhId(Integer dhId) {
+		this.dhId = dhId;
 	}
 
-	public Integer getNearest_dh_id() {
-		return nearest_dh_id;
+	public Integer getNearestDhId() {
+		return nearestDhId;
 	}
 
-	public void setNearest_dh_id(Integer nearest_dh_id) {
-		this.nearest_dh_id = nearest_dh_id;
+	public void setNearestDhId(Integer nearestDhId) {
+		this.nearestDhId = nearestDhId;
 	}
-	
-	
 }
