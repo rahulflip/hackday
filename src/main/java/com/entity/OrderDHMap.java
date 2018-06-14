@@ -16,6 +16,7 @@ public class OrderDHMap {
 
     @Column
     Date date;
+    
 
 
     public Integer getOrder() {
