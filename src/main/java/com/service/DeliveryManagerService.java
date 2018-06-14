@@ -1,5 +1,11 @@
 package com.service;
 
-public class DeliveryManagerService {
+import java.util.List;
 
+import com.dto.DeliveryBoyRequest;
+import com.dto.Response;
+
+public interface DeliveryManagerService {
+
+	List<Response> assignOrdersToDeliveryBoys(DeliveryBoyRequest request);
 }
