@@ -1,0 +1,10 @@
+server:
+  port: 8080
+  contextPath: /DemoApplication
+
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/hackday
+    username: root
+    password:

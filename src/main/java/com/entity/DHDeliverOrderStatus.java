@@ -1,6 +1,5 @@
 package com.entity;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
