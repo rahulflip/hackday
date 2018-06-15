@@ -5,10 +5,14 @@ import com.repository.DHDeliverOrderStatusRepository;
 import com.repository.DeliveryDHMasterRepository;
 import com.service.DefaultDeliveryServiceManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
+
+@Service
 public class DefaultDeliveryServiceManagerImpl implements DefaultDeliveryServiceManager {
+
 
 
     @Autowired
@@ -22,13 +26,13 @@ public class DefaultDeliveryServiceManagerImpl implements DefaultDeliveryService
 
     @Override
     public Integer assignOrdersBydDefaultMethod(Integer dhId){
-        Object[][] totalDBs = deliveryBoyDHMasterRepository.getDelveryBoyRecords(dhId);
-        if(totalDBs != null && totalDBs.length > 0) {
-            for(Object[] db: totalDBs) {
+        Object[][] totalActiveDbs = deliveryBoyDHMasterRepository.getDelveryBoyRecords(dhId,"PRESENT");
+        if(totalActiveDbs != null && totalActiveDbs.length > 0) {
+            for(Object[] db: totalActiveDbs) {
                 Integer capacity_db = (Integer) db[0];
                 Integer dbId = (Integer) db [1];
                 String dbName = (String) db [2];
-                Object [][] unassignedDbs =  dhDeliverOrderStatusRepository.getUnassignedDB(dhId,"UNASSIGNED","PRESENT");
+                Object [][] unassignedDbs =  dhDeliverOrderStatusRepository.getUnassignedDB(dhId,"NOT_ASSIGNED");
                 if(unassignedDbs != null && unassignedDbs.length > 0) {
                     while (capacity_db>0) {
                         for (Object[] dbObject : unassignedDbs) {
@@ -38,9 +42,10 @@ public class DefaultDeliveryServiceManagerImpl implements DefaultDeliveryService
                             dhDeliverOrderStatus.setDeliveryBoyId(dbId);
                             dhDeliverOrderStatus.setDeliveryBoyName(dbName);
                             dhDeliverOrderStatus.setStatus("ASSIGNED");
-                            dhDeliverOrderStatus.setDate((Date) dbObject[2]);
+                            dhDeliverOrderStatus.setDate(new Date());
                             dhDeliverOrderStatus.setOrderId((String) dbObject[3]);
-                            dhDeliverOrderStatusRepository.save(dhDeliverOrderStatus);
+                            //dhDeliverOrderStatusRepository.updateassignedDb((Integer) dbObject[0],dbId,dbName,"ASSIGNED");
+                            dhDeliverOrderStatusRepository.saveAndFlush(dhDeliverOrderStatus);
                         }
                         capacity_db-- ;
                     }
@@ -48,7 +53,7 @@ public class DefaultDeliveryServiceManagerImpl implements DefaultDeliveryService
                     return -1;
                 }
             }
-            Object [][] unassignedDbS =  dhDeliverOrderStatusRepository.getUnassignedDB(dhId,"UNASSIGNED","PRESENT");
+            Object [][] unassignedDbS =  dhDeliverOrderStatusRepository.getUnassignedDB(dhId,"NOT_ASSIGNED");
             if(unassignedDbS==null || unassignedDbS.length ==0){
                 return -1;
             }else{
@@ -57,7 +62,7 @@ public class DefaultDeliveryServiceManagerImpl implements DefaultDeliveryService
                 return dhId;
             }
         }else{
-            Object [][] unassignedDbS =  dhDeliverOrderStatusRepository.getUnassignedDB(dhId,"UNASSIGNED","PRESENT");
+            Object [][] unassignedDbS =  dhDeliverOrderStatusRepository.getUnassignedDB(dhId,"NOT_ASSIGNED");
             if(unassignedDbS==null || unassignedDbS.length ==0){
                 return -1;
             }else{

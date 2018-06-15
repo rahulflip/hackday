@@ -19,11 +19,13 @@ public class DeliveryDHMaster  {
     @Column(name = "delivery_boy_id")
     private Integer deliveryBoyId;
 
+    @Column(name="delivery_boy_name")
+    private  String deliveryBoyName;
+
+
     @Column(name = "dh_id")
     private Integer dhId;
-    
-    @Column(name = "delivery_boy_name")
-    private String deliveryBoyName;
+
 
     public Integer getNoDeliveredPackage() {
         return noDeliveredPackage;

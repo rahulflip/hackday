@@ -14,6 +14,7 @@ public interface DeliveryDHMasterRepository extends JpaRepository<DeliveryDHMast
 
 
 
-	@Query(value = "select dmm.capacity,dmm.delivery_boy_id from delivery_dh_master dmm where dmm.dh_id = (:dhId)",nativeQuery = true)
-	public Object[][] getDelveryBoyRecords(@Param("dhId") Integer dhId);
+	@Query(value = "select dmm.no_delivered_package,dmm.delivery_boy_id,dmm.delivery_boy_name from delivery_dh_master dmm inner join delivery_boy_absence dba on dmm.delivery_boy_id=dba.delivery_boy_id "
+			+ "where dmm.dh_id = (:dhId) and dba.presence = (:active)",nativeQuery = true)
+	public Object[][] getDelveryBoyRecords(@Param("dhId") Integer dhId,@Param("active") String active);
 }

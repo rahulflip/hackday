@@ -1,0 +1,11 @@
+bootRun {
+
+    // Set the default profile to "dev" for the bootRun task
+    systemProperty "spring.profiles.active", "preprod"
+
+
+    systemProperty "SERVER_PORT", "3600"
+
+    // Copy over the properties from -D command line flags for new or overriding flags
+    systemProperties System.properties
+}
