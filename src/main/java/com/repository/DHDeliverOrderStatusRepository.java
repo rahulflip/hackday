@@ -2,14 +2,12 @@ package com.repository;
 
 import com.entity.DHDeliverOrderStatus;
 
+
 import java.util.List;
 
-import org.hibernate.annotations.SQLUpdate;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.transaction.annotation.Transactional;
 
 public interface DHDeliverOrderStatusRepository extends JpaRepository<DHDeliverOrderStatus,Integer> {
 
@@ -25,7 +23,10 @@ public interface DHDeliverOrderStatusRepository extends JpaRepository<DHDeliverO
 //    @Transactional
 //    @Modifying
 //    @Query("update DHDeliverOrderStatus set deliveryBoyId=:dbId,deliveryBoyName=:dbName,status=:status  where id=:id")
-//    public Object [] updateassignedDb(@Param("id") Integer id,@Param("dbId") Integer dbId, @Param("dbName") String dbName, @Param("status") String status);
+//    public Object [] updateassignedDb(@Param("id") Integer id,@Param("dbId") Integer dbId, @Param("dbName") String dbName, @Param("status") String status){
+//
+//
+//    };
 
 
 }

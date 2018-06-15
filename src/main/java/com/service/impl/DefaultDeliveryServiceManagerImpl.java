@@ -7,6 +7,10 @@ import com.service.DefaultDeliveryServiceManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Date;
 
 
@@ -21,11 +25,19 @@ public class DefaultDeliveryServiceManagerImpl implements DefaultDeliveryService
     @Autowired
     DeliveryDHMasterRepository deliveryBoyDHMasterRepository;
 
-
+    void updatefunction(Integer dbId,String dbName,String status,Integer id) throws SQLException {
+        Connection con = DriverManager.getConnection ("jdbc:mysql://localhost:3306/hackday","root", "");
+        PreparedStatement st = con.prepareStatement("update dhDeliveryOrderStatus set deliveryBoyId= ?,deliveryBoyName= ?,status= ?  where id= ?");
+        st.setString(1,Integer.toString(dbId));
+        st.setString(2,dbName);
+        st.setString(3,status);
+        st.setString(4,Integer.toString(id) );
+        st.executeUpdate();
+    }
 
 
     @Override
-    public Integer assignOrdersBydDefaultMethod(Integer dhId){
+    public Integer assignOrdersBydDefaultMethod(Integer dhId) throws SQLException {
         Object[][] totalActiveDbs = deliveryBoyDHMasterRepository.getDelveryBoyRecords(dhId,"PRESENT");
         if(totalActiveDbs != null && totalActiveDbs.length > 0) {
             for(Object[] db: totalActiveDbs) {
@@ -44,8 +56,9 @@ public class DefaultDeliveryServiceManagerImpl implements DefaultDeliveryService
                             dhDeliverOrderStatus.setStatus("ASSIGNED");
                             dhDeliverOrderStatus.setDate(new Date());
                             dhDeliverOrderStatus.setOrderId((String) dbObject[3]);
-                            //dhDeliverOrderStatusRepository.updateassignedDb((Integer) dbObject[0],dbId,dbName,"ASSIGNED");
-                            dhDeliverOrderStatusRepository.saveAndFlush(dhDeliverOrderStatus);
+                            updatefunction(dbId,dbName,"ASSIGNED",(Integer) dbObject[0]);
+//                            dhDeliverOrderStatusRepository.updateassignedDb((Integer) dbObject[0],dbId,dbName,"ASSIGNED");
+//                            dhDeliverOrderStatusRepository.saveAndFlush(dhDeliverOrderStatus);
                         }
                         capacity_db-- ;
                     }
