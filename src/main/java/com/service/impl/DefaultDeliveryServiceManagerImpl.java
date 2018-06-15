@@ -38,6 +38,14 @@ public class DefaultDeliveryServiceManagerImpl implements DefaultDeliveryService
         st.executeUpdate();
     }
 
+    void updatefunction2(Integer dbId) throws SQLException {
+        Connection con = DriverManager.getConnection ("jdbc:mysql://localhost:3306/hackday","root", "");
+        PreparedStatement st = con.prepareStatement("update delivery_boy_absence set assigned_status= ?  where delivery_boy_id= ?");
+        st.setString(1,"ASSIGNED");
+        st.setString(2,Integer.toString(dbId) );
+        st.executeUpdate();
+    }
+
 
     @Override
     public Integer assignOrdersBydDefaultMethod(Integer dhId) throws SQLException {
@@ -63,9 +71,10 @@ public class DefaultDeliveryServiceManagerImpl implements DefaultDeliveryService
                         		//dhDeliverOrderStatusRepository.updateassignedDb((Integer) dbObject[0],dbId,dbName,"ASSIGNED");
                            //dhDeliverOrderStatusRepository.saveAndFlush(dhDeliverOrderStatus);
                         		capacity_db-- ;
-                        		if(capacity_db == 0)
-                        			break;
-
+                        		if(capacity_db == 0){
+                                    updatefunction2(dbId);
+                                    break;
+                                }
                         }
                     }
                 }else{
