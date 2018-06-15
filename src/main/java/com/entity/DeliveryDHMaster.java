@@ -15,8 +15,7 @@ public class DeliveryDHMaster  {
 
     @Column(name = "no_delivered_package")
     private Integer noDeliveredPackage;
-    
-    @Id
+
     @Column(name = "delivery_boy_id")
     private Integer deliveryBoyId;
 

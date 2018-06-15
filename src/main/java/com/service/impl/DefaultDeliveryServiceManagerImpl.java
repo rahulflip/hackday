@@ -32,7 +32,7 @@ public class DefaultDeliveryServiceManagerImpl implements DefaultDeliveryService
                 if(unassignedDbs != null && unassignedDbs.length > 0) {
                     while (capacity_db>0) {
                         for (Object[] dbObject : unassignedDbs) {
-                            DHDeliverOrderStatus dhDeliverOrderStatus = new DHDeliverOrderStatus();
+                            DHDeliverOrderStatus dhDeliverOrderStatus = new DHDeliverOrderStatus(null,null,null,null);
                             dhDeliverOrderStatus.setId((Integer) dbObject[0]);
                             dhDeliverOrderStatus.setDhId((Integer) dbObject[1]);
                             dhDeliverOrderStatus.setDeliveryBoyId(dbId);

@@ -13,6 +13,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan("com.entity")
 @EnableJpaRepositories("com.repository")
 @SpringBootApplication
+@EnableAutoConfiguration(exclude = {
+		JpaRepositoriesAutoConfiguration.class
+})
 public class DemoApplication {
 
 	public static void main(String[] args) {
