@@ -1,0 +1,34 @@
+management:
+  context-path: /manage
+  port: 3800
+
+jetty:
+  # The number of handler threads that will actually process requests
+  workerThreads: 8
+  # The size of the blocking queue for the threadpool. This is shared between
+  # acceptors, selectors and worker threads
+  blockingQueueSize: 13
+  # OS configuration for maximum outstanding requests in the socket. This should
+  # be equal or greater than the space you've considered in the blocking queue
+  # for outstanding network requests.
+  # This cannot be increased beyond the operating system limits, though.
+  # See http://stackoverflow.com/questions/2193146/java-socket-accept-queue-length
+  acceptQueueSize: 20
+  # The number of threads to listen for connections. Acceptors just listen for
+  # connections, and when a new connection is established just add it to a queue
+  # Typically, 1 should be sufficient
+  acceptors: 1
+  # Selectors are responsible for all network traffic. Typically, they should be
+  # equal to the number of cores
+  selectors: 4
+  # The idle timeout for a thread in Jety's threadpool. Note that this applicable
+  # for acceptors, selectors and worker threads
+  workerThreadIdleTimeoutMs: 120000
+  serverPort: 3801
+
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/hackday
+    username: root
+    password:
