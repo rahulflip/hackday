@@ -8,19 +8,19 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name="dhDeliveryOrderStatus")
+@Table(name="dh_delivery_order_status")
 public class DHDeliverOrderStatus {
     @Id
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "dhId")
+    @Column(name = "dh_id")
     private Integer dhId;
 
-    @Column(name = "deliveryBoyId")
+    @Column(name = "delivery_boy_id")
     private Integer deliveryBoyId;
 
-    @Column(name = "deliveryBoyName")
+    @Column(name = "delivery_boy_name")
     private String deliveryBoyName;
 
     @Column(name = "status")

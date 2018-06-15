@@ -60,8 +60,8 @@ public class DefaultDeliveryServiceManagerImpl implements DefaultDeliveryService
                         		dhDeliverOrderStatus.setDate(new Date());
                         		dhDeliverOrderStatus.setOrderId((String) dbObject[3]);
                         		updatefunction(dbId,dbName,"ASSIGNED",(Integer) dbObject[0]);
-//                            dhDeliverOrderStatusRepository.updateassignedDb((Integer) dbObject[0],dbId,dbName,"ASSIGNED");
-//                            dhDeliverOrderStatusRepository.saveAndFlush(dhDeliverOrderStatus);
+                        		//dhDeliverOrderStatusRepository.updateassignedDb((Integer) dbObject[0],dbId,dbName,"ASSIGNED");
+                           //dhDeliverOrderStatusRepository.saveAndFlush(dhDeliverOrderStatus);
                         		capacity_db-- ;
                         		if(capacity_db == 0)
                         			break;

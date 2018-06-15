@@ -15,7 +15,7 @@ public interface DHDeliverOrderStatusRepository extends JpaRepository<DHDeliverO
 	public List<DHDeliverOrderStatus> findUnassignedOrdersForDH(@Param("dhId")Integer dhId, @Param("status") String status);
 
 
-    @Query(value= "select dmm.id,dmm.dhId,dmm.orderDate,dmm.orderId from dhDeliveryOrderStatus dmm "
+    @Query(value= "select dmm.id,dmm.dh_id,dmm.orderDate,dmm.order_id from dh_delivery_order_status dmm "
             + "where dmm.dhId=(:dhId) and dmm.status=(:status)",nativeQuery=true)
     public Object[][] getUnassignedDB(@Param("dhId") Integer dhId, @Param("status") String status);
 
