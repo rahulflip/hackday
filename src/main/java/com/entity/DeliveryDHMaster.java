@@ -8,10 +8,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name="delivery_dh_master")
 public class DeliveryDHMaster  {
-    @Id
+
     @Column(name = "no_delivered_package")
     private Integer noDeliveredPackage;
-
+    
+    @Id
     @Column(name = "delivery_boy_id")
     private Integer deliveryBoyId;
 

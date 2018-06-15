@@ -5,7 +5,8 @@ public class Response {
 	private Integer orderId;
 	private String orderNo;
 	private Integer deliveryMedium;
-	private String deliveryHub;
+	private Integer deliveryHub;
+	private String deliveryMediumName;
 	
 	public Integer getOrderId() {
 		return orderId;
@@ -25,11 +26,18 @@ public class Response {
 	public void setDeliveryMedium(Integer deliveryMedium) {
 		this.deliveryMedium = deliveryMedium;
 	}
-	public String getDeliveryHub() {
+	public Integer getDeliveryHub() {
 		return deliveryHub;
 	}
-	public void setDeliveryHub(String deliveryHub) {
+	public void setDeliveryHub(Integer deliveryHub) {
 		this.deliveryHub = deliveryHub;
 	}
+	public String getDeliveryMediumName() {
+		return deliveryMediumName;
+	}
+	public void setDeliveryMediumName(String deliveryMediumName) {
+		this.deliveryMediumName = deliveryMediumName;
+	}
+	
 	
 }

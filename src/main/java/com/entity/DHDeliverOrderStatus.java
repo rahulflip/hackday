@@ -27,6 +27,13 @@ public class DHDeliverOrderStatus {
 
     @Column(name = "order_id")
     private String orderId;
+    
+    public DHDeliverOrderStatus(Integer dhId, Integer deliveryBoyId, String deliveryBoyName, String status) {
+    	this.dhId = dhId;
+    	this.deliveryBoyId = deliveryBoyId;
+    	this.deliveryBoyName = deliveryBoyName;
+    	this.status = status;
+    }
 
     public Integer getDhId() {
         return dhId;

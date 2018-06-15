@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.dto.DeliveryBoyRequest;
 import com.dto.Response;
+import com.entity.DHDeliverOrderStatus;
 import com.entity.DHToDHMapping;
-import com.entity.OrderDHMap;
+import com.repository.DHDeliverOrderStatusRepository;
 import com.repository.DHToDHRepository;
 import com.repository.DeliveryDHMasterRepository;
-import com.repository.OrderDHMapRepository;
 import com.service.DeliveryManagerService;
 
 @Service
@@ -22,19 +22,18 @@ public class DeliveryManagerServiceImpl implements DeliveryManagerService{
 	DHToDHRepository dhToDhRepository;
 	
 	@Autowired
-	OrderDHMapRepository orderDHMapRepository;
+	DHDeliverOrderStatusRepository orderDHMapRepository;
 	
 	@Autowired
 	DeliveryDHMasterRepository deliveryBoyDHMasterRepository;
 	
 	@Override
-	List<Response> assignOrdersToDeliveryBoys(DeliveryBoyRequest request) {
+	public List<Response> assignOrdersToDeliveryBoys(DeliveryBoyRequest request) {
 		List<Response> response = new ArrayList<Response>();
-		List<Integer> ids = new ArrayList<>();
-		ids.add(request.getDeliveryHub());
-		List<OrderDHMap> unassignedOrders = orderDHMapRepository.findUnassignedOrdersForDH(request.getDeliveryHub(), "UNASSIGNED");
+		List<DHDeliverOrderStatus> unassignedOrders = orderDHMapRepository.findUnassignedOrdersForDH(request.getDeliveryHub(), "UNASSIGNED");
+		Integer unassignedOrderSize = unassignedOrders.size();
 		if(null != unassignedOrders && unassignedOrders.size() > 0) {
-			List<DHToDHMapping> dhIdMappingDataList = dhToDhRepository.findAllById(ids);
+			List<DHToDHMapping> dhIdMappingDataList = dhToDhRepository.findAllByDHIds(request.getDeliveryHub());
 			for(DHToDHMapping dhMapping: dhIdMappingDataList) {
 				Integer nearestDhId = dhMapping.getNearestDhId();
 				Object[][] unassignedDBs = deliveryBoyDHMasterRepository.getUnassignedDB(nearestDhId, "UNASSIGNED", "PRESENT");
@@ -43,14 +42,31 @@ public class DeliveryManagerServiceImpl implements DeliveryManagerService{
 						String dbName = (String)db[0];
 						Integer dbId = (Integer)db[1];
 						Integer capacity = (Integer) db[2];
-						for(OrderDHMap order: unassignedOrders) {
-							if(capacity > 0) {
-								
+						for(DHDeliverOrderStatus order: unassignedOrders) {
+							if(capacity > 0 && order.getStatus() == "UNASSIGNED") {
+								unassignedOrderSize--;
+								Response res = new Response();
+								order.setStatus("ASSIGNED");
+								order.setDeliveryBoyId(dbId);
+								order.setDeliveryBoyName(dbName);
+								res.setDeliveryHub(nearestDhId);
+								res.setDeliveryMedium(dbId);
+								res.setDeliveryMediumName(dbName);
+								res.setOrderNo(order.getOrderId());
+								response.add(res);
+								if(unassignedOrderSize == 0)
+									break;
+								capacity--;
 							}
 						}
+						if(unassignedOrderSize == 0)
+							break;
 					}
 				}
+				if(unassignedOrderSize == 0)
+					break;
 			}
 		}
+		return response;
 	}
 }
