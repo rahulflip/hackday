@@ -12,7 +12,7 @@ import com.entity.DHToDHMapping;
 @Repository
 public interface DHToDHRepository extends JpaRepository<DHToDHMapping,Integer>{
 	
-	@Query(value="select * from dh_dh_mapper where dhId=:dhId",nativeQuery=true)
+	@Query(value="select * from dh_dh_mapper where dh_id=:dhId",nativeQuery=true)
 	List<DHToDHMapping> findAllByDHIds(@Param("dhId") Integer dhId);
 
 }

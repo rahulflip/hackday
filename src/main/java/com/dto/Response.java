@@ -2,18 +2,11 @@ package com.dto;
 
 public class Response {
 
-	private Integer orderId;
 	private String orderNo;
 	private Integer deliveryMedium;
 	private Integer deliveryHub;
 	private String deliveryMediumName;
 	
-	public Integer getOrderId() {
-		return orderId;
-	}
-	public void setOrderId(Integer orderId) {
-		this.orderId = orderId;
-	}
 	public String getOrderNo() {
 		return orderNo;
 	}

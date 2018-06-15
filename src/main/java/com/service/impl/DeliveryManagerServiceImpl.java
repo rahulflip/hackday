@@ -30,20 +30,20 @@ public class DeliveryManagerServiceImpl implements DeliveryManagerService{
 	@Override
 	public List<Response> assignOrdersToDeliveryBoys(DeliveryBoyRequest request) {
 		List<Response> response = new ArrayList<Response>();
-		List<DHDeliverOrderStatus> unassignedOrders = orderDHMapRepository.findUnassignedOrdersForDH(request.getDeliveryHub(), "UNASSIGNED");
+		List<DHDeliverOrderStatus> unassignedOrders = orderDHMapRepository.findUnassignedOrdersForDH(request.getDeliveryHub(), "NOT_ASSIGNED");
 		Integer unassignedOrderSize = unassignedOrders.size();
 		if(null != unassignedOrders && unassignedOrders.size() > 0) {
 			List<DHToDHMapping> dhIdMappingDataList = dhToDhRepository.findAllByDHIds(request.getDeliveryHub());
 			for(DHToDHMapping dhMapping: dhIdMappingDataList) {
 				Integer nearestDhId = dhMapping.getNearestDhId();
-				Object[][] unassignedDBs = deliveryBoyDHMasterRepository.getUnassignedDB(nearestDhId, "UNASSIGNED", "PRESENT");
+				Object[][] unassignedDBs = deliveryBoyDHMasterRepository.getUnassignedDB(nearestDhId, "NOT_ASSIGNED", "PRESENT");
 				if(unassignedDBs != null && unassignedDBs.length > 0) {
 					for(Object[] db: unassignedDBs) {
 						String dbName = (String)db[0];
 						Integer dbId = (Integer)db[1];
 						Integer capacity = (Integer) db[2];
 						for(DHDeliverOrderStatus order: unassignedOrders) {
-							if(capacity > 0 && order.getStatus() == "UNASSIGNED") {
+							if(capacity > 0 && "NOT_ASSIGNED".equals(order.getStatus())) {
 								unassignedOrderSize--;
 								Response res = new Response();
 								order.setStatus("ASSIGNED");

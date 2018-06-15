@@ -21,6 +21,9 @@ public class DeliveryDHMaster  {
 
     @Column(name = "dh_id")
     private Integer dhId;
+    
+    @Column(name = "delivery_boy_name")
+    private String deliveryBoyName;
 
     public Integer getNoDeliveredPackage() {
         return noDeliveredPackage;
@@ -45,4 +48,22 @@ public class DeliveryDHMaster  {
     public void setDhId(Integer dhId) {
         this.dhId = dhId;
     }
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getDeliveryBoyName() {
+		return deliveryBoyName;
+	}
+
+	public void setDeliveryBoyName(String deliveryBoyName) {
+		this.deliveryBoyName = deliveryBoyName;
+	}
+    
+    
 }

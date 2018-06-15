@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name="dh_deliver_order_status")
+@Table(name="dh_delivery_order_status")
 public class DHDeliverOrderStatus {
     @Id
     @Column(name = "id")
@@ -32,11 +32,12 @@ public class DHDeliverOrderStatus {
     @Column(name = "order_id")
     private String orderId;
     
-    public DHDeliverOrderStatus(Integer dhId, Integer deliveryBoyId, String deliveryBoyName, String status) {
+    public DHDeliverOrderStatus(Integer dhId, Integer deliveryBoyId, String deliveryBoyName, String status, String orderId) {
     	this.dhId = dhId;
     	this.deliveryBoyId = deliveryBoyId;
     	this.deliveryBoyName = deliveryBoyName;
     	this.status = status;
+    	this.orderId = orderId;
     }
 
 
