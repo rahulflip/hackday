@@ -9,6 +9,10 @@ import javax.persistence.Table;
 @Table(name="delivery_dh_master")
 public class DeliveryDHMaster  {
 
+    @Id
+    @Column(name = "id")
+    private Integer id;
+
     @Column(name = "no_delivered_package")
     private Integer noDeliveredPackage;
     

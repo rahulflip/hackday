@@ -1,5 +1,7 @@
 package com.entity;
 
+import jdk.nashorn.internal.objects.annotations.Getter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -10,6 +12,9 @@ import java.util.Date;
 @Table(name="dh_deliver_order_status")
 public class DHDeliverOrderStatus {
     @Id
+    @Column(name = "id")
+    private Integer id;
+
     @Column(name = "dh_id")
     private Integer dhId;
 
@@ -34,6 +39,11 @@ public class DHDeliverOrderStatus {
     	this.deliveryBoyName = deliveryBoyName;
     	this.status = status;
     }
+
+
+    public void setId(Integer id){this.id=id;}
+
+    public Integer getId(){return  id;}
 
     public Integer getDhId() {
         return dhId;

@@ -11,6 +11,9 @@ import java.util.Date;
 public class DeliveryBoyAbsence {
 
     @Id
+    @Column(name = "id")
+    private Integer id;
+
     @Column(name = "delivery_boy_id")
     private Integer deliveryBoyId;
 

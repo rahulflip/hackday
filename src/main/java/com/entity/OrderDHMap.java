@@ -8,7 +8,6 @@ package com.entity;
 public class OrderDHMap {
 
     @Id
-    @GeneratedValue
     @Column(name = "id")
     Integer id;
 
